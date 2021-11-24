@@ -6,14 +6,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Boilerplate Nextjs</title>
+        <title>Market</title>
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
 
-        <meta
-          name="description"
-          content="Um boilerplate simples para se iniciar projetos com o create-next-app"
-        />
+        <meta name="description" content="A MarketShop for buy some clothes" />
       </Head>
       <GlobalStyles />
       <Component {...pageProps} />

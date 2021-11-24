@@ -7,15 +7,34 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  @media(max-width: 1080px) {
   html {
-    font-size: 62.5%;
+    font-size: 93.75%;
   }
+}
 
-  html, body, #__next {
-    height: 100%;
+@media(max-width: 720px) {
+  html {
+    font-size: 87.5%;
   }
+}
 
-  body {
-    font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+body {
+  background: #c6c6c6;
+  color: #230F5B;
+}
+
+body, input, textarea, select, button {
+  font: 400 1rem "Roboto", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s;
+}
 `;
