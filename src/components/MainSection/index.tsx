@@ -1,4 +1,11 @@
-import { Container, ShopContainer, CartContainer, Cart } from "./styles";
+import {
+  Container,
+  ShopContainer,
+  CartContainer,
+  Cart,
+  CartList,
+  CartListItem,
+} from "./styles";
 
 export function MainSection() {
   return (
@@ -8,11 +15,108 @@ export function MainSection() {
       </ShopContainer>
       <CartContainer>
         <Cart>
-          <ul>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-          </ul>
+          <CartList>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+            <CartListItem>
+              <div>
+                <strong>Name: </strong>
+                <p>Nome Exemplo</p>
+              </div>
+              <div>
+                <strong>Quantity: </strong>
+                <p>3</p>
+              </div>
+            </CartListItem>
+          </CartList>
           <span>Total: R$ 1832,00</span>
         </Cart>
       </CartContainer>
