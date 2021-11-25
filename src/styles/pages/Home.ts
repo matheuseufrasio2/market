@@ -6,4 +6,12 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Main = styled.div`
+  flex: 1;
+  height: calc(100vh - 5.563rem);
+  width: 1152px;
 `;

@@ -4,13 +4,15 @@ import { MainSection } from "components/MainSection";
 import type { NextPage } from "next";
 import React from "react";
 
-import { Container } from "../styles/pages/Home";
+import { Container, Main } from "../styles/pages/Home";
 
 const Home: NextPage = () => {
   return (
     <Container>
-      <Header />
-      <MainSection />
+      <Main>
+        <Header />
+        <MainSection />
+      </Main>
       <Footer />
     </Container>
   );
