@@ -3,12 +3,20 @@ import styled from "styled-components";
 export const Container = styled.div`
   flex: 1;
   margin: 0 4.125rem 0 6.938rem;
-  padding: 0 0 3.563rem 0;
   max-height: calc(100vh - 12.563rem);
-  /* background-color: black; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export const MainContainers = styled.div`
+  flex: 1;
+  max-height: calc(100vh - 12.563rem);
 
   display: flex;
   align-items: flex-end;
+  margin-bottom: 3.563rem;
 `;
 
 export const ShopContainer = styled.div`
@@ -20,7 +28,7 @@ export const ShopContainer = styled.div`
 `;
 
 export const CartContainer = styled.div`
-  width: 20.813rem;
+  width: 221px;
   height: 31.563rem;
 
   display: flex;
@@ -149,11 +157,27 @@ export const SelectFilters = styled.div`
   }
 `;
 
-export const Cards = styled.div`
-  height: 28.125rem;
-  margin-top: auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 19px;
+export const ButtonsPages = styled.div`
+  width: 638px;
+  margin-right: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    border: 0;
+    background-color: transparent;
+    color: #230f5b;
+    transition: all 0.2s;
+    text-decoration: underline;
+
+    &:hover {
+      filter: brightness(1.9);
+    }
+
+    & + button {
+      margin-left: 2rem;
+    }
+  }
 `;

@@ -1,25 +1,36 @@
 import Image from "next/image";
 
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "store/modules/cart/actions";
+import Product from "types/Product";
 
-import { Button, Container, Info } from "./styles";
+import { Button, Container, Info, PhotoContainer } from "./styles";
 
-export function Card() {
-  function handleAddToCart() {
-    console.log("Add to cart");
+type ICardProps = {
+  product: Product;
+};
+
+export function Card({ product }: ICardProps) {
+  const dispatch = useDispatch();
+
+  function handleAddToCart(product: Product) {
+    dispatch(addProductToCart(product));
   }
 
   return (
     <Container>
-      <Image
-        src="/img/image1.png"
-        width={170}
-        height={215}
-        layout="responsive"
-        priority
-      />
+      <PhotoContainer>
+        <Image
+          src={product.image}
+          width={170}
+          height={215}
+          layout="responsive"
+          priority
+        />
+      </PhotoContainer>
       <Info>
-        <strong>Mens Casual</strong>
+        <strong>{product.title}</strong>
         <p className="description">
           <strong>Description:</strong> Lightweight perfet for trip or casual
           wear---Long sleeve with hooded, adjustable drawstring waist design.
@@ -39,7 +50,7 @@ export function Card() {
           <span>$ 39.99</span>
         </p>
       </Info>
-      <Button type="button" onClick={handleAddToCart}>
+      <Button type="button" onClick={() => handleAddToCart(product)}>
         Add to cart
       </Button>
     </Container>
