@@ -13,6 +13,7 @@ type ICardProps = {
 
 export function Card({ product }: ICardProps) {
   const dispatch = useDispatch();
+  const numberOfStars = Math.ceil(product.rating.rate);
 
   function handleAddToCart(product: Product) {
     dispatch(addProductToCart(product));
@@ -26,28 +27,70 @@ export function Card({ product }: ICardProps) {
           width={170}
           height={215}
           layout="responsive"
-          priority
         />
       </PhotoContainer>
       <Info>
         <strong>{product.title}</strong>
         <p className="description">
-          <strong>Description:</strong> Lightweight perfet for trip or casual
-          wear---Long sleeve with hooded, adjustable drawstring waist design.
+          <strong>Description:</strong> {product.description5words}
         </p>
         <p className="rating">
           <strong>rating:</strong>
           <span>
-            <AiFillStar color="#FFB800" />
-            <AiFillStar color="#FFB800" />
-            <AiFillStar color="#FFB800" />
-            <AiFillStar color="#FFB800" />
-            <AiOutlineStar color="#FFB800" />
+            {
+              {
+                1: (
+                  <>
+                    <AiFillStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                  </>
+                ),
+                2: (
+                  <>
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                  </>
+                ),
+                3: (
+                  <>
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                  </>
+                ),
+                4: (
+                  <>
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiOutlineStar color="#FFB800" />
+                  </>
+                ),
+                5: (
+                  <>
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                    <AiFillStar color="#FFB800" />
+                  </>
+                ),
+              }[numberOfStars]
+            }
           </span>
         </p>
         <p>
           <strong>price: </strong>
-          <span>$ 39.99</span>
+          <span>{product.priceFormatted?.replace("$", "$ ")}</span>
         </p>
       </Info>
       <Button type="button" onClick={() => handleAddToCart(product)}>

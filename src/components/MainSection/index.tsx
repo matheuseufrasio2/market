@@ -1,9 +1,12 @@
+import { ChangeEvent } from "react";
 import { Cards } from "components/Cards";
 import { InputFilters } from "components/InputFilters";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "store";
 import { ICartItem } from "store/modules/cart/types";
-import { nextPage, previousPage } from "store/modules/page/actions";
+import { changeFilterByRating } from "store/modules/catalog/actions";
+import { nextPage, previousPage } from "store/modules/catalog/actions";
+import Product from "types/Product";
 import {
   Container,
   MainContainers,
@@ -19,21 +22,28 @@ import {
 
 export function MainSection() {
   const dispatch = useDispatch();
-  const catalog = useSelector<IState, Product[]>(
-    (state) => state.catalog.items,
+  const itemsFiltered = useSelector<IState, Product[]>(
+    (state) => state.catalog.itemsFiltered.products,
   );
+  console.log(itemsFiltered.length);
   const itemsCart = useSelector<IState, ICartItem[]>(
     (state) => state.cart.items,
   );
-
+  const totalFormatted = useSelector<IState, string>(
+    (state) => state.cart.totalFormatted,
+  );
   function handleNextPage() {
     const itemsPerPage = 3;
-    const lastPage = Math.floor(catalog.length / itemsPerPage);
+    const lastPage = Math.floor(itemsFiltered.length / itemsPerPage);
     dispatch(nextPage(lastPage));
   }
 
   function handlePreviousPage() {
     dispatch(previousPage());
+  }
+
+  function handleChangeFilterByRating(event: ChangeEvent<HTMLSelectElement>) {
+    dispatch(changeFilterByRating(event.currentTarget.value));
   }
 
   return (
@@ -43,7 +53,13 @@ export function MainSection() {
           <Filters>
             <InputFilters />
             <SelectFilters>
-              <select name="filter_by" id="filter_by">
+              <select
+                onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                  handleChangeFilterByRating(event)
+                }
+                name="filter_by"
+                id="filter_by"
+              >
                 <option value="default">Filter by rating</option>
                 <option value="1">1 star</option>
                 <option value="2">+2 stars</option>
@@ -76,7 +92,7 @@ export function MainSection() {
                 </CartListItem>
               ))}
             </CartList>
-            <span>Total: R$ 1832,00</span>
+            <span>Total: {totalFormatted.replace("$", "$ ")}</span>
           </Cart>
         </CartContainer>
       </MainContainers>

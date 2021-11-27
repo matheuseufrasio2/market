@@ -39,6 +39,23 @@ export const PhotoContainer = styled.div`
 export const Info = styled.div`
   margin-top: 0.813rem;
   margin: 0 10px;
+  max-height: 9.75rem;
+
+  margin-bottom: auto;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #230f5b;
+    border-radius: 8px;
+  }
 
   .description {
     margin-top: 0.5rem;
@@ -69,10 +86,7 @@ export const Info = styled.div`
 `;
 
 export const Button = styled.button`
-  overflow: hidden;
-  margin-top: auto;
-
-  height: 2.75rem;
+  height: 45px;
 
   border: 0;
   background-color: #230f5b;

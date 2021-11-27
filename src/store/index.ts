@@ -6,7 +6,6 @@ import rootReducer from "./modules/rootReducer";
 export interface IState {
   cart: ICartState;
   catalog: ICatalogState;
-  page: number;
 }
 
 const store = createStore(rootReducer);

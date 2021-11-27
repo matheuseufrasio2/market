@@ -5,24 +5,44 @@ import { IState } from "store";
 import { Container } from "./styles";
 import Product from "types/Product";
 
-export function Cards() {
-  const catalog = useSelector<IState, Product[]>(
-    (state) => state.catalog.items,
+export function CardsEmpty() {
+  return (
+    <Container>
+      <h1>CardEMpt</h1>
+    </Container>
   );
-  const currentPage = useSelector<IState, number>((state) => state.page);
+}
+
+export function Cards() {
+  const productsFiltered = useSelector<IState, Product[]>(
+    (state) => state.catalog.itemsFiltered.products,
+  );
+
+  const currentPage = useSelector<IState, number>(
+    (state) => state.catalog.page,
+  );
 
   const itemsPerPage = 3;
 
   const indexOfLastPost = currentPage * itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
 
-  const currentProducts = catalog.slice(indexOfFirstPost, indexOfLastPost);
+  const currentProducts = productsFiltered.slice(
+    indexOfFirstPost,
+    indexOfLastPost,
+  );
 
   return (
-    <Container>
-      {currentProducts.map((product) => (
-        <Card key={product.id} product={product} />
-      ))}
-    </Container>
+    <>
+      {currentProducts ? (
+        <Container>
+          {currentProducts.map((product) => (
+            <Card key={product.id} product={product} />
+          ))}
+        </Container>
+      ) : (
+        <CardsEmpty />
+      )}
+    </>
   );
 }

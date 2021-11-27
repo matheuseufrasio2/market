@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Footer } from "components/Footer";
 import { Header } from "components/Header";
@@ -8,8 +8,9 @@ import type { GetStaticProps } from "next";
 import React from "react";
 
 import { Container, Main } from "../styles/pages/Home";
-import Product from "types/Product";
 import { addProductsToCatalog } from "store/modules/catalog/actions";
+import Product from "types/Product";
+import { formatPrice } from "utils/format";
 
 type HomeProps = {
   products: Product[];
@@ -18,13 +19,12 @@ type HomeProps = {
 export default function Home({ products }: HomeProps) {
   const dispatch = useDispatch();
 
-  const handleAddProductsToCatalog = useCallback(() => {
-    dispatch(addProductsToCatalog(products));
-  }, [dispatch, products]);
-
   useEffect(() => {
+    const handleAddProductsToCatalog = () => {
+      dispatch(addProductsToCatalog(products));
+    };
     handleAddProductsToCatalog();
-  }, [handleAddProductsToCatalog]);
+  }, [dispatch, products]);
 
   return (
     <Container>
@@ -39,7 +39,20 @@ export default function Home({ products }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await api.get("/products");
-  const products = response.data;
+  const data = response.data;
+
+  const products = data.map((product: Product) => ({
+    id: product.id,
+    title: product.title,
+    price: product.price,
+    priceFormatted: formatPrice(product.price),
+    description: product.description,
+    description5words:
+      product.description.split(" ").splice(0, 5).join(" ") + "...",
+    category: product.category,
+    image: product.image,
+    rating: product.rating,
+  }));
 
   return {
     props: {
