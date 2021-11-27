@@ -18,17 +18,26 @@ export function changeFilterByRating(value: string) {
   };
 }
 
-export function nextPage(lastPage: number) {
+export function nextPage() {
   return {
     type: "NEXT_PAGE",
-    payload: {
-      lastPage,
-    },
   };
 }
 
 export function previousPage() {
   return {
     type: "PREVIOUS_PAGE",
+  };
+}
+
+export function sortByHighestPrice() {
+  return {
+    type: "SORT_BY_HIGHEST_PRICE",
+  };
+}
+
+export function sortByLowerPrice() {
+  return {
+    type: "SORT_BY_LOWER_PRICE",
   };
 }

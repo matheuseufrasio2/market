@@ -37,18 +37,35 @@ const catalog: Reducer<ICatalogState> = (state = INITIAL_STATE, action) => {
       });
     }
     case "NEXT_PAGE": {
-      const { lastPage } = action.payload;
       return produce(state, (draft) => {
-        if (state.page > lastPage) {
-          return;
+        const maximumPages = draft.itemsFiltered.products.length / 3;
+        if (state.page < maximumPages) {
+          draft.page++;
         }
-        draft.page++;
       });
     }
     case "PREVIOUS_PAGE": {
       return produce(state, (draft) => {
         if (state.page === 1) return state;
         draft.page--;
+      });
+    }
+    case "SORT_BY_LOWER_PRICE": {
+      return produce(state, (draft) => {
+        draft.itemsFiltered.products = draft.itemsFiltered.products.sort(
+          (a, b) => {
+            return a.price - b.price;
+          },
+        );
+      });
+    }
+    case "SORT_BY_HIGHEST_PRICE": {
+      return produce(state, (draft) => {
+        draft.itemsFiltered.products = draft.itemsFiltered.products.sort(
+          (a, b) => {
+            return b.price - a.price;
+          },
+        );
       });
     }
     default: {

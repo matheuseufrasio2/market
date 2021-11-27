@@ -4,7 +4,11 @@ import { InputFilters } from "components/InputFilters";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "store";
 import { ICartItem } from "store/modules/cart/types";
-import { changeFilterByRating } from "store/modules/catalog/actions";
+import {
+  changeFilterByRating,
+  sortByHighestPrice,
+  sortByLowerPrice,
+} from "store/modules/catalog/actions";
 import { nextPage, previousPage } from "store/modules/catalog/actions";
 import Product from "types/Product";
 import {
@@ -25,7 +29,7 @@ export function MainSection() {
   const itemsFiltered = useSelector<IState, Product[]>(
     (state) => state.catalog.itemsFiltered.products,
   );
-  console.log(itemsFiltered.length);
+  console.log(itemsFiltered);
   const itemsCart = useSelector<IState, ICartItem[]>(
     (state) => state.cart.items,
   );
@@ -33,9 +37,7 @@ export function MainSection() {
     (state) => state.cart.totalFormatted,
   );
   function handleNextPage() {
-    const itemsPerPage = 3;
-    const lastPage = Math.floor(itemsFiltered.length / itemsPerPage);
-    dispatch(nextPage(lastPage));
+    dispatch(nextPage());
   }
 
   function handlePreviousPage() {
@@ -44,6 +46,13 @@ export function MainSection() {
 
   function handleChangeFilterByRating(event: ChangeEvent<HTMLSelectElement>) {
     dispatch(changeFilterByRating(event.currentTarget.value));
+  }
+  function handleSortBy(event: ChangeEvent<HTMLSelectElement>) {
+    if (Number(event.currentTarget.value) === 2) {
+      dispatch(sortByLowerPrice());
+    } else if (Number(event.currentTarget.value) === 1) {
+      dispatch(sortByHighestPrice());
+    }
   }
 
   return (
@@ -67,7 +76,13 @@ export function MainSection() {
                 <option value="4">+4 stars</option>
                 <option value="5">5 stars</option>
               </select>
-              <select name="filter_by" id="filter_by">
+              <select
+                onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                  handleSortBy(event)
+                }
+                name="sort_by"
+                id="sorty_by"
+              >
                 <option value="default">Sorty by</option>
                 <option value="1">Highest price</option>
                 <option value="2">Lowest price</option>
