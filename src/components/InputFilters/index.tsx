@@ -9,7 +9,7 @@ import { searchByName } from "store/modules/catalog/actions";
 export function InputFilters() {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
-  const debouncedValue = useDebounce<string>(text, 1000);
+  const debouncedValue = useDebounce<string>(text, 500);
 
   function handleChange(event: FormEvent<HTMLInputElement>) {
     setText(event.currentTarget.value);
