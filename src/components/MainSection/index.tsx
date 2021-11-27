@@ -10,7 +10,7 @@ import {
   sortByLowerPrice,
 } from "store/modules/catalog/actions";
 import { nextPage, previousPage } from "store/modules/catalog/actions";
-import Product from "types/Product";
+
 import {
   Container,
   MainContainers,
@@ -26,10 +26,7 @@ import {
 
 export function MainSection() {
   const dispatch = useDispatch();
-  const itemsFiltered = useSelector<IState, Product[]>(
-    (state) => state.catalog.itemsFiltered.products,
-  );
-  console.log(itemsFiltered);
+
   const itemsCart = useSelector<IState, ICartItem[]>(
     (state) => state.cart.items,
   );

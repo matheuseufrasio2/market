@@ -41,3 +41,12 @@ export function sortByLowerPrice() {
     type: "SORT_BY_LOWER_PRICE",
   };
 }
+
+export function searchByName(name: string) {
+  return {
+    type: "SEARCH_BY_NAME",
+    payload: {
+      name,
+    },
+  };
+}
