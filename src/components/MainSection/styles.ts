@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   flex: 1;
@@ -83,11 +83,18 @@ export const CartList = styled.ul`
   }
 `;
 
+const appear = keyframes`
+  0% { opacity: 0; transform: translateY(-300px); }
+  100% { opacity: 1; transform: translateY(0); }
+`;
+
 export const CartListItem = styled.li`
   width: 100%;
   border: 1px solid #230f5b;
   padding: 1rem 0.8rem 2rem;
   border-radius: 8px;
+  animation-duration: 0.5s;
+  animation-name: ${appear};
 
   > div {
     display: flex;

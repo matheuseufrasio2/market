@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const appear = keyframes`
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+`;
 
 export const Container = styled.div`
   height: 28.125rem;
@@ -11,6 +16,8 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  animation-duration: 1s;
+  animation-name: ${appear};
 `;
 
 export const PhotoContainer = styled.div`
