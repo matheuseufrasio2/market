@@ -23,6 +23,7 @@ const catalog: Reducer<ICatalogState> = (state = INITIAL_STATE, action) => {
         draft.itemsFiltered = {
           products: products,
           filterByRating: "default",
+          sortBy: "default",
         };
       });
     }
