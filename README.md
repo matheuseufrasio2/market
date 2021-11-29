@@ -21,7 +21,7 @@
 
 ## See it in production
 
-<a href="https://market-eta.vercel.app/">Market Shopping - Published on Vercel</a>
+<a target="_blank" href="https://market-eta.vercel.app/">Market Shopping - Published on Vercel</a>
 
 ## Running locally
 
