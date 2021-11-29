@@ -9,8 +9,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Market Shoes</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/img/favicon.png" />
+        <link rel="apple-touch-icon" href="/img/favicon.png" />
 
         <meta name="description" content="A MarketShop for buy some clothes" />
       </Head>
